@@ -1,23 +1,65 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from '@/hooks/use-mobile';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Globe } from 'lucide-react';
 
 interface NavItem {
   label: string;
   href: string;
 }
 
-const navItems: NavItem[] = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
-];
+interface LanguageStrings {
+  [key: string]: {
+    home: string;
+    about: string;
+    projects: string;
+    contact: string;
+    getStarted: string;
+  }
+}
+
+const languages: LanguageStrings = {
+  en: {
+    home: 'Home',
+    about: 'About',
+    projects: 'Projects',
+    contact: 'Contact',
+    getStarted: 'Get Started'
+  },
+  ru: {
+    home: 'Главная',
+    about: 'Обо мне',
+    projects: 'Проекты',
+    contact: 'Контакт',
+    getStarted: 'Начать'
+  }
+};
 
 const Navbar = () => {
   const isMobile = useIsMobile();
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [language, setLanguage] = useState<'en' | 'ru'>('en');
+
+  const strings = languages[language];
+
+  const navItems: NavItem[] = [
+    { label: strings.home, href: '#home' },
+    { label: strings.about, href: '#about' },
+    { label: strings.projects, href: '#projects' },
+    { label: strings.contact, href: '#contact' },
+  ];
+
+  const handleLanguageChange = (value: string) => {
+    setLanguage(value as 'en' | 'ru');
+  };
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 glass">
@@ -29,6 +71,21 @@ const Navbar = () => {
           
           {isMobile ? (
             <div className="flex items-center">
+              <Select defaultValue={language} onValueChange={handleLanguageChange}>
+                <SelectTrigger className="w-[60px] mr-2 bg-transparent border-white/30">
+                  <SelectValue>
+                    <div className="flex items-center">
+                      <Globe className="h-4 w-4 mr-1" />
+                      {language.toUpperCase()}
+                    </div>
+                  </SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="en">EN</SelectItem>
+                  <SelectItem value="ru">RU</SelectItem>
+                </SelectContent>
+              </Select>
+              
               <Button 
                 variant="ghost" 
                 size="icon" 
@@ -74,8 +131,24 @@ const Navbar = () => {
                   {item.label}
                 </a>
               ))}
+              
+              <Select defaultValue={language} onValueChange={handleLanguageChange}>
+                <SelectTrigger className="w-[80px] bg-transparent border-white/30">
+                  <SelectValue>
+                    <div className="flex items-center">
+                      <Globe className="h-4 w-4 mr-1" />
+                      {language.toUpperCase()}
+                    </div>
+                  </SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="en">English</SelectItem>
+                  <SelectItem value="ru">Русский</SelectItem>
+                </SelectContent>
+              </Select>
+              
               <Button className="bg-gradient-to-r from-shimmer-dark to-shimmer-accent hover:opacity-90 transition-opacity">
-                Get Started
+                {strings.getStarted}
               </Button>
             </div>
           )}
