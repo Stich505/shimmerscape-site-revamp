@@ -1,7 +1,7 @@
 
 import React, { useContext } from 'react';
 import { LanguageContext } from '@/pages/Index';
-import { Telegram } from 'lucide-react';
+import TelegramIcon from './icons/TelegramIcon';
 
 const Footer = () => {
   const { language } = useContext(LanguageContext);
@@ -44,7 +44,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a href="https://t.me/stitch505" target="_blank" rel="noopener noreferrer" className="text-foreground/70 hover:text-shimmer-accent transition-colors" aria-label="Telegram">
-                <Telegram size={20} />
+                <TelegramIcon size={20} />
               </a>
               <a href="#" className="text-foreground/70 hover:text-shimmer-accent transition-colors" aria-label="Twitter">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -82,7 +82,7 @@ const Footer = () => {
                 <span className="text-foreground/70">{currentContent.address}</span>
               </li>
               <li className="flex items-start space-x-2">
-                <Telegram className="text-shimmer-accent mt-0.5" size={18} />
+                <TelegramIcon className="text-shimmer-accent mt-0.5" size={18} />
                 <span className="text-foreground/70">@stitch505</span>
               </li>
               <li className="flex items-start space-x-2">

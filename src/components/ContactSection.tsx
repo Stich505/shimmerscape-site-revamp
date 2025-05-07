@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
 import { LanguageContext } from '@/pages/Index';
-import { Telegram } from 'lucide-react';
+import TelegramIcon from './icons/TelegramIcon';
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -85,7 +85,7 @@ const ContactSection = () => {
               rel="noopener noreferrer"
               className="flex items-center gap-2 py-2 px-4 bg-shimmer-accent/20 rounded-full hover:bg-shimmer-accent/30 transition-colors"
             >
-              <Telegram size={20} className="text-shimmer-accent" />
+              <TelegramIcon size={20} className="text-shimmer-accent" />
               <span>{currentContent.telegram}: @stitch505</span>
             </a>
           </div>
