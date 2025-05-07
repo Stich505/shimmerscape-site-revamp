@@ -17,18 +17,6 @@ export const LanguageContext = createContext({
 const Index = () => {
   const [language, setLanguage] = useState<'en' | 'ru'>('en');
   
-  // Hero text content based on language
-  const heroContent = {
-    en: {
-      title: "Transform Your Digital Presence",
-      subtitle: "Innovative design solutions that captivate users and elevate your brand with stunning visual effects"
-    },
-    ru: {
-      title: "Преобразуйте Свое Цифровое Присутствие",
-      subtitle: "Инновационные дизайнерские решения, которые захватывают пользователей и поднимают ваш бренд с потрясающими визуальными эффектами"
-    }
-  };
-
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>
       <div className="min-h-screen relative">
@@ -39,10 +27,7 @@ const Index = () => {
         <div className="relative z-10">
           <Navbar />
           <main>
-            <Hero 
-              title={heroContent[language].title}
-              subtitle={heroContent[language].subtitle}
-            />
+            <Hero />
             <AboutSection />
             <ProjectsSection />
             <ContactSection />

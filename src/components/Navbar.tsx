@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from '@/hooks/use-mobile';
 import {
@@ -10,6 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Globe } from 'lucide-react';
+import { LanguageContext } from '@/pages/Index';
 
 interface NavItem {
   label: string;
@@ -46,7 +47,7 @@ const languages: LanguageStrings = {
 const Navbar = () => {
   const isMobile = useIsMobile();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [language, setLanguage] = useState<'en' | 'ru'>('en');
+  const { language, setLanguage } = useContext(LanguageContext);
 
   const strings = languages[language];
 
@@ -71,7 +72,7 @@ const Navbar = () => {
           
           {isMobile ? (
             <div className="flex items-center">
-              <Select defaultValue={language} onValueChange={handleLanguageChange}>
+              <Select defaultValue={language} onValueChange={handleLanguageChange} value={language}>
                 <SelectTrigger className="w-[60px] mr-2 bg-transparent border-white/30">
                   <SelectValue>
                     <div className="flex items-center">
@@ -132,7 +133,7 @@ const Navbar = () => {
                 </a>
               ))}
               
-              <Select defaultValue={language} onValueChange={handleLanguageChange}>
+              <Select defaultValue={language} onValueChange={handleLanguageChange} value={language}>
                 <SelectTrigger className="w-[80px] bg-transparent border-white/30">
                   <SelectValue>
                     <div className="flex items-center">

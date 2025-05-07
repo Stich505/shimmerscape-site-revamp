@@ -1,6 +1,7 @@
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button } from "@/components/ui/button";
+import { LanguageContext } from '@/pages/Index';
 
 interface HeroProps {
   title?: string;
@@ -9,22 +10,34 @@ interface HeroProps {
   ctaLink?: string;
 }
 
-const Hero: React.FC<HeroProps> = ({
-  title = "Welcome to ShimmerScape",
-  subtitle = "A beautiful design with shimmering effects, creating an immersive digital experience",
-  ctaText = "Explore",
-  ctaLink = "#about"
-}) => {
+const Hero: React.FC<HeroProps> = () => {
+  const { language } = useContext(LanguageContext);
+
+  const content = {
+    en: {
+      title: "Transform Your Digital Presence",
+      subtitle: "Innovative design solutions that captivate users and elevate your brand with stunning visual effects",
+      ctaText: "Explore",
+      contactUs: "Contact Us"
+    },
+    ru: {
+      title: "Преобразуйте Свое Цифровое Присутствие",
+      subtitle: "Инновационные дизайнерские решения, которые захватывают пользователей и поднимают ваш бренд с потрясающими визуальными эффектами",
+      ctaText: "Исследовать",
+      contactUs: "Связаться"
+    }
+  };
+
   return (
     <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-28">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold shimmer-text mb-4 md:mb-6">
-            {title}
+            {content[language].title}
           </h1>
           
           <p className="text-lg md:text-xl text-foreground/90 mb-8 md:mb-10">
-            {subtitle}
+            {content[language].subtitle}
           </p>
           
           <div className="flex gap-4">
@@ -33,7 +46,7 @@ const Hero: React.FC<HeroProps> = ({
               size="lg"
               asChild
             >
-              <a href={ctaLink}>{ctaText}</a>
+              <a href="#about">{content[language].ctaText}</a>
             </Button>
             
             <Button
@@ -42,7 +55,7 @@ const Hero: React.FC<HeroProps> = ({
               className="backdrop-blur-sm border-white/30"
               asChild
             >
-              <a href="#contact">Contact Us</a>
+              <a href="#contact">{content[language].contactUs}</a>
             </Button>
           </div>
         </div>
