@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+
+import React, { useContext } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { LanguageContext } from '@/pages/Index';
 
 interface Project {
   title: string;
@@ -12,35 +14,25 @@ interface Project {
   tags: string[];
 }
 
-interface Strings {
-  sectionTitle: string;
-  sectionDescription: string;
-  viewDetails: string;
-  viewAll: string;
-}
-
-const languageStrings = {
-  en: {
-    sectionTitle: "My Projects",
-    sectionDescription: "Explore my latest work in system administration, DevOps, and infrastructure projects.",
-    viewDetails: "View Details",
-    viewAll: "View All Projects"
-  },
-  ru: {
-    sectionTitle: "Мои Проекты",
-    sectionDescription: "Изучите мои последние работы в области системного администрирования, DevOps и инфраструктурных проектов.",
-    viewDetails: "Подробнее",
-    viewAll: "Все Проекты"
-  }
-};
-
 const ProjectsSection = () => {
-  const [language, setLanguage] = useState<'en' | 'ru'>('en');
+  const { language } = useContext(LanguageContext);
   
-  // Use the current language from Navbar (in a real app, this would be managed with context or state management)
-  // For now, we'll keep it as a local state to demonstrate
-  
-  const strings: Strings = languageStrings[language];
+  const strings = {
+    en: {
+      sectionTitle: "My Projects",
+      sectionDescription: "Explore my latest work in system administration, DevOps, and infrastructure projects.",
+      viewDetails: "View Details",
+      viewAll: "View All Projects"
+    },
+    ru: {
+      sectionTitle: "Мои Проекты",
+      sectionDescription: "Изучите мои последние работы в области системного администрирования, DevOps и инфраструктурных проектов.",
+      viewDetails: "Подробнее",
+      viewAll: "Все Проекты"
+    }
+  };
+
+  const currentContent = strings[language];
   
   const projects: Project[] = [
     {
@@ -81,26 +73,14 @@ const ProjectsSection = () => {
     }
   ];
 
-  const toggleLanguage = () => {
-    setLanguage(prev => prev === 'en' ? 'ru' : 'en');
-  };
-
   return (
     <section id="projects" className="py-20 bg-foreground/5">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold shimmer-text mb-4">{strings.sectionTitle}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold shimmer-text mb-4">{currentContent.sectionTitle}</h2>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
-            {strings.sectionDescription}
+            {currentContent.sectionDescription}
           </p>
-          <Button 
-            onClick={toggleLanguage} 
-            variant="outline" 
-            size="sm" 
-            className="mt-4 backdrop-blur-sm border-white/30"
-          >
-            {language === 'en' ? 'Switch to Russian' : 'Переключиться на английский'}
-          </Button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -128,7 +108,7 @@ const ProjectsSection = () => {
                 </div>
                 <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="sm" className="w-full backdrop-blur-sm border-white/30 group-hover:bg-shimmer-accent/20 transition-colors">
-                    {strings.viewDetails}
+                    {currentContent.viewDetails}
                   </Button>
                 </a>
               </CardContent>
@@ -138,7 +118,7 @@ const ProjectsSection = () => {
 
         <div className="text-center mt-10">
           <Button className="bg-gradient-to-r from-shimmer-dark to-shimmer-accent hover:opacity-90 transition-opacity">
-            {strings.viewAll}
+            {currentContent.viewAll}
           </Button>
         </div>
       </div>

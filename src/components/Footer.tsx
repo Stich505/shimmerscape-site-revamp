@@ -16,7 +16,7 @@ const Footer = () => {
       contact: "Contact",
       contactTitle: "Contact",
       address: "123 Tech Street, Digital City",
-      copyright: "© 2025 ShimmerScape. All rights reserved."
+      copyright: "© 2025 Stitch505. All rights reserved."
     },
     ru: {
       description: "Создание мощных цифровых решений с использованием передовых технологий и эффективной системной архитектуры.",
@@ -27,7 +27,7 @@ const Footer = () => {
       contact: "Контакты",
       contactTitle: "Контакты",
       address: "123 Техническая улица, Цифровой город",
-      copyright: "© 2025 ShimmerScape. Все права защищены."
+      copyright: "© 2025 Stitch505. Все права защищены."
     }
   };
 
@@ -38,7 +38,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-xl font-bold shimmer-text mb-4">ShimmerScape</h3>
+            <h3 className="text-xl font-bold shimmer-text mb-4">Stitch505</h3>
             <p className="text-foreground/80 mb-4 max-w-md">
               {currentContent.description}
             </p>

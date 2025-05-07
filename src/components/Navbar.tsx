@@ -67,7 +67,7 @@ const Navbar = () => {
       <div className="container mx-auto py-4 px-4 md:px-6">
         <nav className="flex items-center justify-between">
           <div className="flex items-center">
-            <a href="#" className="text-2xl font-bold shimmer-text">ShimmerScape</a>
+            <a href="#" className="text-2xl font-bold shimmer-text">Stitch505</a>
           </div>
           
           {isMobile ? (
