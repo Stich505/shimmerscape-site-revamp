@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/select";
 import { Globe } from 'lucide-react';
 import { LanguageContext } from '@/pages/Index';
+import ContactDialog from './ContactDialog';
 
 interface NavItem {
   label: string;
@@ -47,6 +48,7 @@ const languages: LanguageStrings = {
 const Navbar = () => {
   const isMobile = useIsMobile();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
   const { language, setLanguage } = useContext(LanguageContext);
 
   const strings = languages[language];
@@ -118,6 +120,15 @@ const Navbar = () => {
                       {item.label}
                     </a>
                   ))}
+                  <Button 
+                    className="w-full text-left px-4 py-2 bg-transparent hover:bg-accent/20 font-normal justify-start rounded-none h-auto"
+                    onClick={() => {
+                      setIsContactDialogOpen(true);
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    {strings.getStarted}
+                  </Button>
                 </div>
               )}
             </div>
@@ -148,13 +159,17 @@ const Navbar = () => {
                 </SelectContent>
               </Select>
               
-              <Button className="bg-gradient-to-r from-shimmer-dark to-shimmer-accent hover:opacity-90 transition-opacity">
+              <Button 
+                className="bg-gradient-to-r from-shimmer-dark to-shimmer-accent hover:opacity-90 transition-opacity"
+                onClick={() => setIsContactDialogOpen(true)}
+              >
                 {strings.getStarted}
               </Button>
             </div>
           )}
         </nav>
       </div>
+      <ContactDialog open={isContactDialogOpen} onOpenChange={setIsContactDialogOpen} />
     </header>
   );
 };

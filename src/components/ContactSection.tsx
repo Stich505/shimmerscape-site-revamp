@@ -38,7 +38,7 @@ const ContactSection = () => {
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <Card className="glass overflow-hidden">
+          <Card className="glass overflow-hidden border border-white/30">
             <div className="p-6 md:p-8">
               <div className="space-y-6">
                 <div className="flex flex-col items-center">
@@ -46,23 +46,23 @@ const ContactSection = () => {
                     href="https://t.me/stitch505" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 py-2 px-4 bg-shimmer-accent/20 rounded-full hover:bg-shimmer-accent/30 transition-colors mb-4"
+                    className="flex items-center gap-2 py-2 px-4 bg-blue-600/20 rounded-full hover:bg-blue-600/30 transition-colors mb-4"
                   >
-                    <TelegramIcon size={20} className="text-shimmer-accent" />
+                    <TelegramIcon size={20} className="text-blue-500" />
                     <span>{currentContent.telegram}: @stitch505</span>
                   </a>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-xl mt-6">
-                    <div className="flex flex-col items-center space-y-2 p-4 glass rounded-lg">
-                      <Mail className="text-shimmer-accent h-8 w-8 mb-2" />
+                    <div className="flex flex-col items-center space-y-2 p-4 glass rounded-lg border border-white/20">
+                      <Mail className="text-blue-500 h-8 w-8 mb-2" />
                       <h3 className="font-medium">{currentContent.email}</h3>
-                      <a href="mailto:aladingleb1997@gmail.com" className="text-foreground/70 hover:text-shimmer-accent transition-colors">
+                      <a href="mailto:aladingleb1997@gmail.com" className="text-foreground/70 hover:text-blue-500 transition-colors">
                         aladingleb1997@gmail.com
                       </a>
                     </div>
                     
-                    <div className="flex flex-col items-center space-y-2 p-4 glass rounded-lg">
-                      <MapPin className="text-shimmer-accent h-8 w-8 mb-2" />
+                    <div className="flex flex-col items-center space-y-2 p-4 glass rounded-lg border border-white/20">
+                      <MapPin className="text-purple-500 h-8 w-8 mb-2" />
                       <h3 className="font-medium">{currentContent.address}</h3>
                       <p className="text-foreground/70">Development City</p>
                     </div>

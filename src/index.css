@@ -50,7 +50,7 @@
 
 @layer components {
   .shimmer-background {
-    @apply fixed inset-0 z-0 bg-shimmer-gradient from-shimmer-dark via-shimmer-medium to-shimmer-light animate-shimmer bg-[length:400%_400%];
+    @apply fixed inset-0 z-0 bg-shimmer-gradient from-blue-600 via-purple-500 to-indigo-400 animate-shimmer bg-[length:400%_400%];
   }
   
   .glass {
@@ -58,7 +58,7 @@
   }
   
   .shimmer-text {
-    @apply bg-gradient-to-r from-shimmer-dark via-shimmer-accent to-shimmer-medium bg-clip-text text-transparent bg-[length:200%_auto] animate-shimmer;
+    @apply bg-gradient-to-r from-blue-600 via-purple-500 to-indigo-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-shimmer;
   }
 }
 
