@@ -52,7 +52,7 @@ const Hero: React.FC<HeroProps> = () => {
             <Button
               variant="outline"
               size="lg"
-              className="backdrop-blur-sm border-white/30 text-white hover:bg-white/10 w-full sm:w-auto"
+              className="backdrop-blur-sm border-white/30 text-white hover:bg-white/10 hover:text-white hover:border-white/50 w-full sm:w-auto"
               asChild
             >
               <a href="#contact">{content[language].contactUs}</a>

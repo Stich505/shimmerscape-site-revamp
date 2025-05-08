@@ -43,8 +43,13 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    @apply overflow-x-hidden;
+    scroll-behavior: smooth;
   }
 }
 
@@ -73,10 +78,6 @@
   .text-shadow-lg {
     text-shadow: 0 0 8px rgba(255,255,255,0.6), 0 3px 10px rgba(0,0,0,0.5);
   }
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 /* Improved responsiveness */
