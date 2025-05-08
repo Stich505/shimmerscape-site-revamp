@@ -69,13 +69,17 @@ const Navbar = () => {
       <div className="container mx-auto py-4 px-4 md:px-6">
         <nav className="flex items-center justify-between">
           <div className="flex items-center">
-            <a href="#" className="text-2xl font-bold shimmer-text">Stitch505</a>
+            <a href="#" className="text-2xl font-bold text-white text-shadow-lg">
+              <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+                Stitch505
+              </span>
+            </a>
           </div>
           
           {isMobile ? (
             <div className="flex items-center">
               <Select defaultValue={language} onValueChange={handleLanguageChange} value={language}>
-                <SelectTrigger className="w-[60px] mr-2 bg-transparent border-white/30">
+                <SelectTrigger className="w-[60px] mr-2 bg-transparent border-white/30 text-white">
                   <SelectValue>
                     <div className="flex items-center">
                       <Globe className="h-4 w-4 mr-1" />
@@ -94,6 +98,7 @@ const Navbar = () => {
                 size="icon" 
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle menu"
+                className="text-white"
               >
                 {isMenuOpen ? (
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -114,14 +119,14 @@ const Navbar = () => {
                     <a
                       key={item.label}
                       href={item.href}
-                      className="block px-4 py-2 text-foreground hover:bg-accent/20"
+                      className="block px-4 py-2 text-white hover:bg-white/20"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.label}
                     </a>
                   ))}
                   <Button 
-                    className="w-full text-left px-4 py-2 bg-transparent hover:bg-accent/20 font-normal justify-start rounded-none h-auto"
+                    className="w-full text-left px-4 py-2 bg-transparent hover:bg-white/20 font-normal justify-start rounded-none h-auto text-white"
                     onClick={() => {
                       setIsContactDialogOpen(true);
                       setIsMenuOpen(false);
@@ -138,14 +143,14 @@ const Navbar = () => {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="font-medium text-foreground hover:text-primary transition-colors"
+                  className="font-medium text-white hover:text-blue-200 transition-colors text-shadow-sm"
                 >
                   {item.label}
                 </a>
               ))}
               
               <Select defaultValue={language} onValueChange={handleLanguageChange} value={language}>
-                <SelectTrigger className="w-[80px] bg-transparent border-white/30">
+                <SelectTrigger className="w-[80px] bg-transparent border-white/30 text-white">
                   <SelectValue>
                     <div className="flex items-center">
                       <Globe className="h-4 w-4 mr-1" />

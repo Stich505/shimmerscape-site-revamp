@@ -32,11 +32,11 @@ const Hero: React.FC<HeroProps> = () => {
     <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-28">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold shimmer-text mb-4 md:mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold shimmer-text mb-4 md:mb-6 text-shadow-lg">
             {content[language].title}
           </h1>
           
-          <p className="text-lg md:text-xl text-foreground/90 mb-8 md:mb-10">
+          <p className="text-lg md:text-xl text-white mb-8 md:mb-10 font-medium text-shadow-sm">
             {content[language].subtitle}
           </p>
           
@@ -52,7 +52,7 @@ const Hero: React.FC<HeroProps> = () => {
             <Button
               variant="outline"
               size="lg"
-              className="backdrop-blur-sm border-white/30"
+              className="backdrop-blur-sm border-white/30 text-white"
               asChild
             >
               <a href="#contact">{content[language].contactUs}</a>

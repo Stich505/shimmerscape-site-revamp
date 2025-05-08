@@ -64,10 +64,10 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				shimmer: {
-					'light': '#8B5CF6', // More saturated purple
-					'medium': '#D946EF', // Bright magenta
-					'dark': '#0EA5E9', // Ocean blue
-					'accent': '#4f46e5' // Keep this color
+					'light': '#9D5CF6', // More saturated purple
+					'medium': '#E346EF', // Brighter magenta
+					'dark': '#1EA5E9', // More saturated ocean blue
+					'accent': '#5A46E5' // More saturated indigo
 				}
 			},
 			borderRadius: {
