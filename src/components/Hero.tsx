@@ -50,9 +50,8 @@ const Hero: React.FC<HeroProps> = () => {
             </Button>
             
             <Button
-              variant="outline"
               size="lg"
-              className="backdrop-blur-sm border-white/30 text-white hover:bg-white/10 hover:text-white hover:border-white/50 w-full sm:w-auto"
+              className="bg-gradient-to-r from-shimmer-dark to-shimmer-accent hover:opacity-90 transition-opacity w-full sm:w-auto"
               asChild
             >
               <a href="#contact">{content[language].contactUs}</a>
