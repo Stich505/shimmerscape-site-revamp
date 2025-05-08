@@ -126,7 +126,7 @@ const Navbar = () => {
                     </a>
                   ))}
                   <Button 
-                    className="w-full text-left px-4 py-2 bg-transparent hover:bg-white/20 font-normal justify-start rounded-none h-auto text-white"
+                    className="w-full text-left px-4 py-2 bg-transparent hover:bg-white/20 text-white font-normal justify-start rounded-none h-auto"
                     onClick={() => {
                       setIsContactDialogOpen(true);
                       setIsMenuOpen(false);
@@ -165,7 +165,7 @@ const Navbar = () => {
               </Select>
               
               <Button 
-                className="bg-gradient-to-r from-shimmer-dark to-shimmer-accent hover:opacity-90 transition-opacity"
+                className="bg-gradient-to-r from-shimmer-dark to-shimmer-accent hover:opacity-90 transition-opacity text-white"
                 onClick={() => setIsContactDialogOpen(true)}
               >
                 {strings.getStarted}

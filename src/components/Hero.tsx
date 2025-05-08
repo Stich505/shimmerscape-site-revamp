@@ -29,20 +29,20 @@ const Hero: React.FC<HeroProps> = () => {
   };
 
   return (
-    <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-28">
+    <section id="home" className="relative pt-24 pb-16 md:pt-32 md:pb-20 lg:pt-40 lg:pb-28">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold shimmer-text mb-4 md:mb-6 text-shadow-lg">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold shimmer-text mb-4 md:mb-6 text-shadow-lg">
             {content[language].title}
           </h1>
           
-          <p className="text-lg md:text-xl text-white mb-8 md:mb-10 font-medium text-shadow-sm">
+          <p className="text-base sm:text-lg md:text-xl text-white mb-6 md:mb-8 lg:mb-10 font-medium text-shadow-sm leading-relaxed">
             {content[language].subtitle}
           </p>
           
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto sm:justify-center">
             <Button
-              className="bg-gradient-to-r from-shimmer-dark to-shimmer-accent hover:opacity-90 transition-opacity"
+              className="bg-gradient-to-r from-shimmer-dark to-shimmer-accent hover:opacity-90 transition-opacity w-full sm:w-auto"
               size="lg"
               asChild
             >
@@ -52,7 +52,7 @@ const Hero: React.FC<HeroProps> = () => {
             <Button
               variant="outline"
               size="lg"
-              className="backdrop-blur-sm border-white/30 text-white"
+              className="backdrop-blur-sm border-white/30 text-white hover:bg-white/10 w-full sm:w-auto"
               asChild
             >
               <a href="#contact">{content[language].contactUs}</a>
@@ -62,8 +62,8 @@ const Hero: React.FC<HeroProps> = () => {
       </div>
       
       {/* Decorative Elements */}
-      <div className="absolute -top-10 -left-10 w-72 h-72 bg-shimmer-accent/10 rounded-full filter blur-3xl animate-pulse-slow"></div>
-      <div className="absolute top-1/4 -right-10 w-60 h-60 bg-shimmer-dark/20 rounded-full filter blur-3xl animate-pulse-slow"></div>
+      <div className="absolute -top-10 -left-10 w-48 md:w-72 h-48 md:h-72 bg-shimmer-accent/10 rounded-full filter blur-3xl animate-pulse-slow"></div>
+      <div className="absolute top-1/4 -right-10 w-40 md:w-60 h-40 md:h-60 bg-shimmer-dark/20 rounded-full filter blur-3xl animate-pulse-slow"></div>
     </section>
   );
 };

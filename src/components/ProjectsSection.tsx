@@ -1,8 +1,9 @@
 
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { LanguageContext } from '@/pages/Index';
+import OrderServiceDialog from './OrderServiceDialog';
 
 interface Project {
   title: string;
@@ -12,23 +13,28 @@ interface Project {
   imageUrl: string;
   repoUrl: string;
   tags: string[];
+  isOrderable?: boolean;
 }
 
 const ProjectsSection = () => {
   const { language } = useContext(LanguageContext);
+  const [isOrderDialogOpen, setIsOrderDialogOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState<string>("");
   
   const strings = {
     en: {
       sectionTitle: "My Projects",
       sectionDescription: "Explore my latest work in system administration, DevOps, and infrastructure projects.",
       viewDetails: "View Details",
-      viewAll: "View All Projects"
+      viewAll: "View All Projects",
+      order: "Order"
     },
     ru: {
       sectionTitle: "Мои Проекты",
       sectionDescription: "Изучите мои последние работы в области системного администрирования, DevOps и инфраструктурных проектов.",
       viewDetails: "Подробнее",
-      viewAll: "Все Проекты"
+      viewAll: "Все Проекты",
+      order: "Заказать"
     }
   };
 
@@ -50,7 +56,7 @@ const ProjectsSection = () => {
       description: "Building and configuring VPN services from scratch, including server setup, security hardening, and user management.",
       descriptionRu: "Создание и настройка VPN-сервисов с нуля, включая настройку сервера, усиление безопасности и управление пользователями.",
       imageUrl: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80",
-      repoUrl: "#vpn-setup",
+      repoUrl: "https://t.me/a1rvpn_bot",
       tags: ["VPN", "Networking", "Security", "Linux"]
     },
     {
@@ -60,7 +66,8 @@ const ProjectsSection = () => {
       descriptionRu: "Настройка и оптимизация инфраструктуры почтового сервера с фильтрацией спама, функциями безопасности и высокой доставляемостью.",
       imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80",
       repoUrl: "#mail-service",
-      tags: ["Postfix", "SMTP", "Security", "Linux"]
+      tags: ["Postfix", "SMTP", "Security", "Linux"],
+      isOrderable: true
     },
     {
       title: "Nextcloud Deployment",
@@ -68,10 +75,15 @@ const ProjectsSection = () => {
       description: "Implementing Nextcloud solutions via Docker and Nginx, including configuration, optimization, and security hardening.",
       descriptionRu: "Внедрение решений Nextcloud через Docker и Nginx, включая настройку, оптимизацию и усиление безопасности.",
       imageUrl: "https://images.unsplash.com/photo-1544396821-4dd40b938ad3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80",
-      repoUrl: "#nextcloud",
+      repoUrl: "https://nextcloud.stitch505.su",
       tags: ["Docker", "Nginx", "Cloud", "DevOps"]
     }
   ];
+
+  const handleOpenOrderDialog = (serviceName: string) => {
+    setSelectedService(serviceName);
+    setIsOrderDialogOpen(true);
+  };
 
   return (
     <section id="projects" className="py-20 bg-foreground/5">
@@ -83,7 +95,7 @@ const ProjectsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
           {projects.map((project, index) => (
             <Card key={index} className="glass overflow-hidden group hover:shadow-lg transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
@@ -106,22 +118,44 @@ const ProjectsSection = () => {
                     </span>
                   ))}
                 </div>
-                <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" size="sm" className="w-full backdrop-blur-sm border-white/30 group-hover:bg-shimmer-accent/20 transition-colors">
-                    {currentContent.viewDetails}
+                {project.isOrderable ? (
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="w-full backdrop-blur-sm border-white/30 group-hover:bg-shimmer-accent/20 transition-colors"
+                    onClick={() => handleOpenOrderDialog(language === 'en' ? project.title : project.titleRu)}
+                  >
+                    {currentContent.order}
                   </Button>
-                </a>
+                ) : (
+                  <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="w-full backdrop-blur-sm border-white/30 group-hover:bg-shimmer-accent/20 transition-colors"
+                    >
+                      {currentContent.viewDetails}
+                    </Button>
+                  </a>
+                )}
               </CardContent>
             </Card>
           ))}
         </div>
 
+        {/* "View All Projects" button commented out for now
         <div className="text-center mt-10">
           <Button className="bg-gradient-to-r from-shimmer-dark to-shimmer-accent hover:opacity-90 transition-opacity">
             {currentContent.viewAll}
           </Button>
         </div>
+        */}
       </div>
+      <OrderServiceDialog 
+        open={isOrderDialogOpen} 
+        onOpenChange={setIsOrderDialogOpen} 
+        serviceName={selectedService}
+      />
     </section>
   );
 };
