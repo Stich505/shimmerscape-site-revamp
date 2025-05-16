@@ -114,19 +114,19 @@ const Navbar = () => {
               </Button>
               
               {isMenuOpen && (
-                <div className="absolute top-full left-0 right-0 glass mt-1 py-2">
+                <div className="absolute top-full left-0 right-0 glass mt-1 py-2 bg-black/70 backdrop-blur-lg border-t border-b border-white/20 shadow-xl">
                   {navItems.map((item) => (
                     <a
                       key={item.label}
                       href={item.href}
-                      className="block px-4 py-2 text-white hover:bg-white/20"
+                      className="block px-4 py-3 text-white hover:bg-white/20 transition-colors font-medium"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.label}
                     </a>
                   ))}
                   <Button 
-                    className="w-full text-left px-4 py-2 bg-transparent hover:bg-white/20 text-white font-normal justify-start rounded-none h-auto"
+                    className="w-full text-left px-4 py-3 bg-transparent hover:bg-white/20 text-white font-medium justify-start rounded-none h-auto"
                     onClick={() => {
                       setIsContactDialogOpen(true);
                       setIsMenuOpen(false);
