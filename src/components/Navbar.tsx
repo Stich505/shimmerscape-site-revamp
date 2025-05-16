@@ -1,4 +1,3 @@
-
 import React, { useState, useContext } from 'react';
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -114,20 +113,20 @@ const Navbar = () => {
               </Button>
               
               {isMenuOpen && (
-                <div className="absolute top-full left-0 right-0 bg-white/30 backdrop-blur-xl border-t border-b border-white/40 shadow-2xl mt-1">
-                  <div className="px-2 py-4">
+                <div className="absolute top-full left-0 right-0 bg-white/60 backdrop-blur-2xl border-t border-b border-white/50 shadow-2xl mt-1">
+                  <div className="px-4 py-6 bg-gradient-to-b from-white/80 to-blue-50/90 rounded-md m-2">
                     {navItems.map((item) => (
                       <a
                         key={item.label}
                         href={item.href}
-                        className="block px-4 py-3 text-white hover:bg-white/30 transition-colors font-medium rounded-md mb-1"
+                        className="block px-4 py-3 text-gray-800 hover:bg-blue-100/70 transition-colors font-medium rounded-md mb-2 shadow-sm"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         {item.label}
                       </a>
                     ))}
                     <Button 
-                      className="w-full text-left px-4 py-3 bg-transparent hover:bg-white/30 text-white font-medium justify-start rounded-md h-auto mt-2"
+                      className="w-full text-left px-4 py-3 bg-gradient-to-r from-shimmer-dark to-shimmer-accent hover:opacity-90 text-white font-medium justify-start rounded-md h-auto mt-3"
                       onClick={() => {
                         setIsContactDialogOpen(true);
                         setIsMenuOpen(false);
