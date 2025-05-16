@@ -78,6 +78,23 @@
   .text-shadow-lg {
     text-shadow: 0 0 8px rgba(255,255,255,0.6), 0 3px 10px rgba(0,0,0,0.5);
   }
+  
+  /* Enhanced button styles */
+  .btn-shimmer {
+    @apply relative overflow-hidden;
+  }
+  
+  .btn-shimmer::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full;
+    animation: shimmer-button 2s infinite;
+  }
+  
+  @keyframes shimmer-button {
+    100% {
+      transform: translateX(100%);
+    }
+  }
 }
 
 /* Improved responsiveness */
@@ -98,4 +115,31 @@ p, h1, h2, h3, h4, h5, h6 {
 a, button {
   position: relative;
   z-index: 2;
+}
+
+/* Enhanced animations */
+@keyframes float-rotate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.animate-float-rotate {
+  animation: float-rotate 6s ease-in-out infinite;
+}
+
+@keyframes color-shift {
+  0% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(30deg); }
+  100% { filter: hue-rotate(0deg); }
+}
+
+.animate-color-shift {
+  animation: color-shift 8s infinite;
 }
