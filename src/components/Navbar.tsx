@@ -114,26 +114,28 @@ const Navbar = () => {
               </Button>
               
               {isMenuOpen && (
-                <div className="absolute top-full left-0 right-0 glass mt-1 py-2 bg-black/70 backdrop-blur-lg border-t border-b border-white/20 shadow-xl">
-                  {navItems.map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      className="block px-4 py-3 text-white hover:bg-white/20 transition-colors font-medium"
-                      onClick={() => setIsMenuOpen(false)}
+                <div className="absolute top-full left-0 right-0 bg-white/30 backdrop-blur-xl border-t border-b border-white/40 shadow-2xl mt-1">
+                  <div className="px-2 py-4">
+                    {navItems.map((item) => (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        className="block px-4 py-3 text-white hover:bg-white/30 transition-colors font-medium rounded-md mb-1"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                    <Button 
+                      className="w-full text-left px-4 py-3 bg-transparent hover:bg-white/30 text-white font-medium justify-start rounded-md h-auto mt-2"
+                      onClick={() => {
+                        setIsContactDialogOpen(true);
+                        setIsMenuOpen(false);
+                      }}
                     >
-                      {item.label}
-                    </a>
-                  ))}
-                  <Button 
-                    className="w-full text-left px-4 py-3 bg-transparent hover:bg-white/20 text-white font-medium justify-start rounded-none h-auto"
-                    onClick={() => {
-                      setIsContactDialogOpen(true);
-                      setIsMenuOpen(false);
-                    }}
-                  >
-                    {strings.getStarted}
-                  </Button>
+                      {strings.getStarted}
+                    </Button>
+                  </div>
                 </div>
               )}
             </div>
