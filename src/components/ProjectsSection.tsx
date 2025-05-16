@@ -20,6 +20,7 @@ const ProjectsSection = () => {
   const { language } = useContext(LanguageContext);
   const [isOrderDialogOpen, setIsOrderDialogOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<string>("");
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   
   const strings = {
     en: {
@@ -86,8 +87,11 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="py-20 bg-foreground/5">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="projects" className="py-20 relative overflow-hidden">
+      {/* Add a subtle background effect specific to this section */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-purple-500/5 to-indigo-400/5 animate-shimmer-slow"></div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold shimmer-text mb-4">{currentContent.sectionTitle}</h2>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
@@ -97,32 +101,49 @@ const ProjectsSection = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
           {projects.map((project, index) => (
-            <Card key={index} className="glass overflow-hidden group hover:shadow-lg transition-all duration-300">
+            <Card 
+              key={index} 
+              className={`overflow-hidden rounded-xl transform transition-all duration-500 hover:scale-[1.02] hover:shadow-xl backdrop-blur-md bg-gradient-to-br from-white/10 via-white/15 to-white/5 border border-white/20 shadow-lg
+                ${hoveredIndex === index ? 'ring-2 ring-shimmer-accent/50' : ''}`}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
               <div className="relative h-48 overflow-hidden">
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70"></div>
+                
+                {/* Image */}
                 <img 
                   src={project.imageUrl} 
                   alt={language === 'en' ? project.title : project.titleRu} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{language === 'en' ? project.title : project.titleRu}</h3>
-                <p className="text-foreground/80 mb-4">
-                  {language === 'en' ? project.description : project.descriptionRu}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
+                
+                {/* Tags positioned on the image */}
+                <div className="absolute bottom-0 left-0 p-4 w-full flex flex-wrap gap-2">
                   {project.tags.map((tag, i) => (
-                    <span key={i} className="text-xs py-1 px-2 rounded-full bg-shimmer-accent/10 text-shimmer-accent">
+                    <span 
+                      key={i} 
+                      className="text-xs py-1 px-2 rounded-full backdrop-blur-sm bg-shimmer-accent/30 text-white font-medium shadow-sm animate-pulse-slow"
+                      style={{ animationDelay: `${i * 0.15}s` }}
+                    >
                       {tag}
                     </span>
                   ))}
                 </div>
+              </div>
+              
+              <CardContent className="p-6 backdrop-blur-sm bg-gradient-to-br from-white/5 via-white/10 to-white/5 h-[180px] flex flex-col">
+                <h3 className="text-xl font-semibold mb-2 text-white text-shadow">{language === 'en' ? project.title : project.titleRu}</h3>
+                <p className="text-white/90 mb-4 flex-grow">
+                  {language === 'en' ? project.description : project.descriptionRu}
+                </p>
+                
                 {project.isOrderable ? (
                   <Button 
                     variant="outline" 
                     size="sm" 
-                    className="w-full backdrop-blur-sm border-white/30 group-hover:bg-shimmer-accent/20 transition-colors"
+                    className="w-full backdrop-blur-sm border-white/30 bg-gradient-to-r from-shimmer-accent/20 to-shimmer-dark/20 hover:from-shimmer-accent/40 hover:to-shimmer-dark/40 text-white btn-shimmer"
                     onClick={() => handleOpenOrderDialog(language === 'en' ? project.title : project.titleRu)}
                   >
                     {currentContent.order}
@@ -132,7 +153,7 @@ const ProjectsSection = () => {
                     <Button 
                       variant="outline" 
                       size="sm" 
-                      className="w-full backdrop-blur-sm border-white/30 group-hover:bg-shimmer-accent/20 transition-colors"
+                      className="w-full backdrop-blur-sm border-white/30 bg-gradient-to-r from-shimmer-accent/20 to-shimmer-dark/20 hover:from-shimmer-accent/40 hover:to-shimmer-dark/40 text-white btn-shimmer"
                     >
                       {currentContent.viewDetails}
                     </Button>

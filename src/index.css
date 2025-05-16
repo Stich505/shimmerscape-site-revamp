@@ -95,6 +95,35 @@
       transform: translateX(100%);
     }
   }
+  
+  /* Project card styles */
+  .project-card {
+    @apply relative overflow-hidden rounded-xl backdrop-blur-md transition-all duration-500;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  
+  .project-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  }
+  
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+  }
+  
+  .project-card:hover::before {
+    left: 100%;
+    transition: 0.5s;
+  }
 }
 
 /* Improved responsiveness */
@@ -142,4 +171,18 @@ a, button {
 
 .animate-color-shift {
   animation: color-shift 8s infinite;
+}
+
+@keyframes card-shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-card-shimmer {
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0.05) 25%, 
+    rgba(255,255,255,0.15) 35%,
+    rgba(255,255,255,0.05) 45%);
+  background-size: 200% 100%;
+  animation: card-shimmer 3s infinite;
 }
