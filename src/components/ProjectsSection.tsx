@@ -96,7 +96,7 @@ const ProjectsSection = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold shimmer-text mb-4">
             {currentContent.sectionTitle}
           </h2>
-          <p className="text-base md:text-lg text-foreground/80 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-white font-medium max-w-2xl mx-auto">
             {currentContent.sectionDescription}
           </p>
         </div>

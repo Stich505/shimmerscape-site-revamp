@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import { Button } from "@/components/ui/button";
 import { LanguageContext } from '@/pages/Index';
-import { Sparkles, Download } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 interface HeroProps {
   title?: string;
@@ -16,19 +16,19 @@ const Hero: React.FC<HeroProps> = () => {
 
   const content = {
     en: {
-      name: "Alex Stevens",
+      name: "Gleb Aladyin",
       title: "Transform Your Digital Presence",
       subtitle: "System administrator specializing in VPN solutions, cloud services and digital infrastructure",
       ctaText: "My Projects",
-      contactUs: "Download CV",
+      contactUs: "Contact Us",
       profession: "System Administrator & DevOps Engineer"
     },
     ru: {
-      name: "Алекс Стивенс",
+      name: "Глеб Аладьин",
       title: "Преобразуйте Свое Цифровое Присутствие",
       subtitle: "Системный администратор, специализирующийся на VPN-решениях, облачных сервисах и цифровой инфраструктуре",
       ctaText: "Мои Проекты",
-      contactUs: "Скачать CV",
+      contactUs: "Связаться",
       profession: "Системный администратор и DevOps инженер"
     }
   };
@@ -70,8 +70,8 @@ const Hero: React.FC<HeroProps> = () => {
               className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-indigo-600 hover:to-blue-500 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 transform hover:scale-105 animate-shimmer-fast w-full sm:w-auto text-sm sm:text-base"
               asChild
             >
-              <a href="#" className="flex items-center justify-center gap-2">
-                <Download className="h-4 w-4 sm:h-5 sm:w-5" />
+              <a href="#contact" className="flex items-center justify-center gap-2">
+                <Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />
                 {content[language].contactUs}
               </a>
             </Button>
