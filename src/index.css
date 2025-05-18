@@ -55,7 +55,7 @@
 
 @layer components {
   .shimmer-background {
-    @apply fixed inset-0 z-0 bg-shimmer-gradient from-blue-600 via-purple-500 to-indigo-400 animate-shimmer bg-[length:400%_400%];
+    @apply fixed inset-0 z-0 bg-shimmer-gradient from-blue-800 via-purple-700 to-indigo-600 animate-shimmer bg-[length:400%_400%];
   }
   
   .glass {
@@ -96,17 +96,17 @@
     }
   }
   
-  /* Project card styles */
+  /* Project card styles with darker theme */
   .project-card {
     @apply relative overflow-hidden rounded-xl backdrop-blur-md transition-all duration-500;
-    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: linear-gradient(135deg, rgba(30,27,75,0.9) 0%, rgba(15,23,42,0.95) 100%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.12);
   }
   
   .project-card:hover {
     transform: translateY(-5px) scale(1.01);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
   }
   
   .project-card::before {
@@ -116,7 +116,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
     transition: 0.5s;
   }
   
