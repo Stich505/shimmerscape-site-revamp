@@ -103,14 +103,18 @@ const ProjectsSection = () => {
           {projects.map((project, index) => (
             <Card 
               key={index} 
-              className={`overflow-hidden rounded-xl transform transition-all duration-500 hover:scale-[1.02] hover:shadow-xl backdrop-blur-md bg-gradient-to-br from-white/10 via-white/15 to-white/5 border border-white/20 shadow-lg
-                ${hoveredIndex === index ? 'ring-2 ring-shimmer-accent/50' : ''}`}
+              className={`overflow-hidden rounded-xl transform transition-all duration-500 hover:scale-[1.02] hover:shadow-xl bg-gradient-to-br ${
+                index % 4 === 0 ? 'from-purple-500/20 via-indigo-500/30 to-blue-500/20' :
+                index % 4 === 1 ? 'from-blue-500/20 via-cyan-500/30 to-teal-500/20' :
+                index % 4 === 2 ? 'from-pink-500/20 via-rose-500/30 to-red-500/20' :
+                'from-amber-500/20 via-orange-500/30 to-yellow-500/20'
+              } border border-white/20 shadow-lg`}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
               <div className="relative h-48 overflow-hidden">
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70"></div>
+                {/* Glass overlay with gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                 
                 {/* Image */}
                 <img 
@@ -124,7 +128,12 @@ const ProjectsSection = () => {
                   {project.tags.map((tag, i) => (
                     <span 
                       key={i} 
-                      className="text-xs py-1 px-2 rounded-full backdrop-blur-sm bg-shimmer-accent/30 text-white font-medium shadow-sm animate-pulse-slow"
+                      className={`text-xs py-1 px-2 rounded-full text-white font-medium shadow-lg ${
+                        i % 4 === 0 ? 'bg-purple-500/80' :
+                        i % 4 === 1 ? 'bg-blue-500/80' :
+                        i % 4 === 2 ? 'bg-pink-500/80' :
+                        'bg-amber-500/80'
+                      } animate-pulse-slow`}
                       style={{ animationDelay: `${i * 0.15}s` }}
                     >
                       {tag}
@@ -133,8 +142,13 @@ const ProjectsSection = () => {
                 </div>
               </div>
               
-              <CardContent className="p-6 backdrop-blur-sm bg-gradient-to-br from-white/5 via-white/10 to-white/5 h-[180px] flex flex-col">
-                <h3 className="text-xl font-semibold mb-2 text-white text-shadow">{language === 'en' ? project.title : project.titleRu}</h3>
+              <CardContent className={`p-6 ${
+                index % 4 === 0 ? 'bg-gradient-to-br from-purple-500/10 via-indigo-500/15 to-blue-500/10' :
+                index % 4 === 1 ? 'bg-gradient-to-br from-blue-500/10 via-cyan-500/15 to-teal-500/10' :
+                index % 4 === 2 ? 'bg-gradient-to-br from-pink-500/10 via-rose-500/15 to-red-500/10' :
+                'bg-gradient-to-br from-amber-500/10 via-orange-500/15 to-yellow-500/10'
+              } h-[180px] flex flex-col`}>
+                <h3 className="text-xl font-semibold mb-2 text-white text-shadow-sm">{language === 'en' ? project.title : project.titleRu}</h3>
                 <p className="text-white/90 mb-4 flex-grow">
                   {language === 'en' ? project.description : project.descriptionRu}
                 </p>
@@ -143,7 +157,12 @@ const ProjectsSection = () => {
                   <Button 
                     variant="outline" 
                     size="sm" 
-                    className="w-full backdrop-blur-sm border-white/30 bg-gradient-to-r from-shimmer-accent/20 to-shimmer-dark/20 hover:from-shimmer-accent/40 hover:to-shimmer-dark/40 text-white btn-shimmer"
+                    className={`w-full border border-white/30 ${
+                      index % 4 === 0 ? 'bg-gradient-to-r from-purple-500/40 to-indigo-500/40 hover:from-purple-500/60 hover:to-indigo-500/60' :
+                      index % 4 === 1 ? 'bg-gradient-to-r from-blue-500/40 to-cyan-500/40 hover:from-blue-500/60 hover:to-cyan-500/60' :
+                      index % 4 === 2 ? 'bg-gradient-to-r from-pink-500/40 to-rose-500/40 hover:from-pink-500/60 hover:to-rose-500/60' :
+                      'bg-gradient-to-r from-amber-500/40 to-orange-500/40 hover:from-amber-500/60 hover:to-orange-500/60'
+                    } text-white btn-shimmer font-medium`}
                     onClick={() => handleOpenOrderDialog(language === 'en' ? project.title : project.titleRu)}
                   >
                     {currentContent.order}
@@ -153,7 +172,12 @@ const ProjectsSection = () => {
                     <Button 
                       variant="outline" 
                       size="sm" 
-                      className="w-full backdrop-blur-sm border-white/30 bg-gradient-to-r from-shimmer-accent/20 to-shimmer-dark/20 hover:from-shimmer-accent/40 hover:to-shimmer-dark/40 text-white btn-shimmer"
+                      className={`w-full border border-white/30 ${
+                        index % 4 === 0 ? 'bg-gradient-to-r from-purple-500/40 to-indigo-500/40 hover:from-purple-500/60 hover:to-indigo-500/60' :
+                        index % 4 === 1 ? 'bg-gradient-to-r from-blue-500/40 to-cyan-500/40 hover:from-blue-500/60 hover:to-cyan-500/60' :
+                        index % 4 === 2 ? 'bg-gradient-to-r from-pink-500/40 to-rose-500/40 hover:from-pink-500/60 hover:to-rose-500/60' :
+                        'bg-gradient-to-r from-amber-500/40 to-orange-500/40 hover:from-amber-500/60 hover:to-orange-500/60'
+                      } text-white btn-shimmer font-medium`}
                     >
                       {currentContent.viewDetails}
                     </Button>
@@ -163,14 +187,6 @@ const ProjectsSection = () => {
             </Card>
           ))}
         </div>
-
-        {/* "View All Projects" button commented out for now
-        <div className="text-center mt-10">
-          <Button className="bg-gradient-to-r from-shimmer-dark to-shimmer-accent hover:opacity-90 transition-opacity">
-            {currentContent.viewAll}
-          </Button>
-        </div>
-        */}
       </div>
       <OrderServiceDialog 
         open={isOrderDialogOpen} 
