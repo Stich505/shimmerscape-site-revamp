@@ -1,3 +1,4 @@
+
 import React, { useContext, useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -86,32 +87,34 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="py-20 relative overflow-hidden">
+    <section id="projects" className="py-16 md:py-20 relative overflow-hidden">
       {/* Add a subtle background effect specific to this section */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-purple-500/5 to-indigo-400/5 animate-shimmer-slow"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold shimmer-text mb-4">{currentContent.sectionTitle}</h2>
-          <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold shimmer-text mb-4">
+            {currentContent.sectionTitle}
+          </h2>
+          <p className="text-base md:text-lg text-foreground/80 max-w-2xl mx-auto">
             {currentContent.sectionDescription}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {projects.map((project, index) => (
             <Card 
               key={index} 
               className={`overflow-hidden rounded-xl transform transition-all duration-500 hover:scale-[1.02] hover:shadow-xl ${
-                index % 4 === 0 ? 'bg-gradient-to-br from-purple-900/80 to-indigo-800/80' :
-                index % 4 === 1 ? 'bg-gradient-to-br from-blue-900/80 to-cyan-800/80' :
-                index % 4 === 2 ? 'bg-gradient-to-br from-pink-900/80 to-rose-800/80' :
-                'bg-gradient-to-br from-amber-800/80 to-orange-700/80'
+                index % 4 === 0 ? 'bg-gradient-to-br from-purple-900 to-indigo-800' :
+                index % 4 === 1 ? 'bg-gradient-to-br from-blue-900 to-cyan-800' :
+                index % 4 === 2 ? 'bg-gradient-to-br from-pink-900 to-rose-800' :
+                'bg-gradient-to-br from-amber-800 to-orange-700'
               } border border-white/20 shadow-lg`}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-36 sm:h-48 overflow-hidden">
                 {/* Glass overlay with gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10"></div>
                 
@@ -123,7 +126,7 @@ const ProjectsSection = () => {
                 />
                 
                 {/* Tags positioned on the image */}
-                <div className="absolute bottom-0 left-0 p-4 w-full flex flex-wrap gap-2 z-20">
+                <div className="absolute bottom-0 left-0 p-2 sm:p-4 w-full flex flex-wrap gap-1 sm:gap-2 z-20">
                   {project.tags.map((tag, i) => (
                     <span 
                       key={i} 
@@ -141,14 +144,11 @@ const ProjectsSection = () => {
                 </div>
               </div>
               
-              <CardContent className={`p-6 ${
-                index % 4 === 0 ? 'bg-gradient-to-br from-purple-900/80 to-indigo-800/80' :
-                index % 4 === 1 ? 'bg-gradient-to-br from-blue-900/80 to-cyan-800/80' :
-                index % 4 === 2 ? 'bg-gradient-to-br from-pink-900/80 to-rose-800/80' :
-                'bg-gradient-to-br from-amber-800/80 to-orange-700/80'
-              } h-[180px] flex flex-col`}>
-                <h3 className="text-xl font-semibold mb-2 text-white text-shadow-sm">{language === 'en' ? project.title : project.titleRu}</h3>
-                <p className="text-white/90 mb-4 flex-grow">
+              <CardContent className={`p-4 sm:p-6 h-auto min-h-[160px] sm:min-h-[180px] flex flex-col`}>
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 text-white text-shadow-sm line-clamp-2">
+                  {language === 'en' ? project.title : project.titleRu}
+                </h3>
+                <p className="text-sm sm:text-base text-white/90 mb-4 flex-grow overflow-hidden line-clamp-3">
                   {language === 'en' ? project.description : project.descriptionRu}
                 </p>
                 

@@ -30,9 +30,11 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-16 md:py-20">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold shimmer-text mb-4">{currentContent.title}</h2>
-          <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold shimmer-text mb-4">
+            {currentContent.title}
+          </h2>
+          <p className="text-sm sm:text-base md:text-lg text-foreground/80 max-w-2xl mx-auto">
             {currentContent.description}
           </p>
         </div>
@@ -46,25 +48,25 @@ const ContactSection = () => {
                     href="https://t.me/stitch505" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 py-2 px-4 bg-blue-600/20 rounded-full hover:bg-blue-600/30 transition-colors mb-4 text-shadow-sm"
+                    className="flex items-center gap-2 py-2 px-4 bg-blue-600/20 rounded-full hover:bg-blue-600/30 transition-colors mb-4 text-shadow-sm text-sm sm:text-base"
                   >
-                    <TelegramIcon size={20} className="text-blue-500" />
-                    <span>{currentContent.telegram}: @stitch505</span>
+                    <TelegramIcon size={18} className="text-blue-500" />
+                    <span className="break-all">{currentContent.telegram}: @stitch505</span>
                   </a>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full max-w-xl mt-6">
                     <div className="flex flex-col items-center space-y-2 p-4 glass rounded-lg border border-white/20">
-                      <Mail className="text-blue-500 h-8 w-8 mb-2" />
-                      <h3 className="font-medium">{currentContent.email}</h3>
-                      <a href="mailto:aladingleb1997@gmail.com" className="text-foreground/70 hover:text-blue-500 transition-colors break-all text-center">
+                      <Mail className="text-blue-500 h-6 w-6 sm:h-8 sm:w-8 mb-2" />
+                      <h3 className="font-medium text-sm sm:text-base">{currentContent.email}</h3>
+                      <a href="mailto:aladingleb1997@gmail.com" className="text-foreground/70 hover:text-blue-500 transition-colors break-all text-center text-xs sm:text-sm">
                         aladingleb1997@gmail.com
                       </a>
                     </div>
                     
                     <div className="flex flex-col items-center space-y-2 p-4 glass rounded-lg border border-white/20">
-                      <MapPin className="text-purple-500 h-8 w-8 mb-2" />
-                      <h3 className="font-medium">{currentContent.address}</h3>
-                      <p className="text-foreground/70">Development City</p>
+                      <MapPin className="text-purple-500 h-6 w-6 sm:h-8 sm:w-8 mb-2" />
+                      <h3 className="font-medium text-sm sm:text-base">{currentContent.address}</h3>
+                      <p className="text-foreground/70 text-xs sm:text-sm">Development City</p>
                     </div>
                   </div>
                 </div>

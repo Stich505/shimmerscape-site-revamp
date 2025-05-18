@@ -1,5 +1,5 @@
 
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from '@/hooks/use-mobile';
 import {
@@ -50,6 +50,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
   const { language, setLanguage } = useContext(LanguageContext);
+  const [scrolled, setScrolled] = useState(false);
 
   const strings = languages[language];
 
@@ -60,30 +61,41 @@ const Navbar = () => {
     { label: strings.contact, href: '#contact' },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleLanguageChange = (value: string) => {
     setLanguage(value as 'en' | 'ru');
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 glass">
-      <div className="container mx-auto py-4 px-4 md:px-6">
+    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      scrolled ? 'glass backdrop-blur-md shadow-md' : 'bg-transparent'
+    }`}>
+      <div className="container mx-auto py-3 sm:py-4 px-3 md:px-6">
         <nav className="flex items-center justify-between">
           <div className="flex items-center">
-            <a href="#" className="text-2xl font-bold text-white text-shadow-lg group">
+            <a href="#" className="text-xl sm:text-2xl font-bold text-white text-shadow-lg group">
               <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent group-hover:from-pink-200 group-hover:to-blue-300 transition-all duration-500">
                 Stitch505
               </span>
-              <Sparkles className="inline-block ml-1 h-4 w-4 text-blue-200 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <Sparkles className="inline-block ml-1 h-3 w-3 sm:h-4 sm:w-4 text-blue-200 opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
           </div>
           
           {isMobile ? (
             <div className="flex items-center">
               <Select defaultValue={language} onValueChange={handleLanguageChange} value={language}>
-                <SelectTrigger className="w-[60px] mr-2 bg-transparent border-white/30 text-white">
+                <SelectTrigger className="w-[60px] mr-2 bg-transparent border-white/30 text-white h-8 text-sm">
                   <SelectValue>
                     <div className="flex items-center">
-                      <Globe className="h-4 w-4 mr-1" />
+                      <Globe className="h-3 w-3 mr-1" />
                       {language.toUpperCase()}
                     </div>
                   </SelectValue>
@@ -96,17 +108,17 @@ const Navbar = () => {
               
               <Button 
                 variant="ghost" 
-                size="icon" 
+                size="sm" 
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle menu"
-                className="text-white hover:bg-white/20 transition-colors"
+                className="text-white hover:bg-white/20 transition-colors h-8 w-8 p-0"
               >
                 {isMenuOpen ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M18 6L6 18M6 6l12 12"></path>
                   </svg>
                 ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="4" x2="20" y1="12" y2="12"></line>
                     <line x1="4" x2="20" y1="6" y2="6"></line>
                     <line x1="4" x2="20" y1="18" y2="18"></line>
@@ -142,12 +154,12 @@ const Navbar = () => {
               )}
             </div>
           ) : (
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-3 sm:space-x-6">
               {navItems.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="font-medium text-white hover:text-blue-200 transition-colors text-shadow-sm relative group"
+                  className="text-sm md:text-base font-medium text-white hover:text-blue-200 transition-colors text-shadow-sm relative group"
                 >
                   {item.label}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
@@ -155,10 +167,10 @@ const Navbar = () => {
               ))}
               
               <Select defaultValue={language} onValueChange={handleLanguageChange} value={language}>
-                <SelectTrigger className="w-[80px] bg-transparent border-white/30 text-white hover:border-white/50 transition-colors">
+                <SelectTrigger className="w-[80px] bg-transparent border-white/30 text-white hover:border-white/50 transition-colors text-sm">
                   <SelectValue>
                     <div className="flex items-center">
-                      <Globe className="h-4 w-4 mr-1" />
+                      <Globe className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
                       {language.toUpperCase()}
                     </div>
                   </SelectValue>
@@ -170,10 +182,11 @@ const Navbar = () => {
               </Select>
               
               <Button 
-                className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-purple-600 hover:to-pink-500 transition-all duration-300 text-white shadow-lg hover:shadow-pink-500/25 transform hover:scale-105 btn-shimmer"
+                size="sm"
+                className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-purple-600 hover:to-pink-500 transition-all duration-300 text-white shadow-lg hover:shadow-pink-500/25 transform hover:scale-105 btn-shimmer text-xs sm:text-sm"
                 onClick={() => setIsContactDialogOpen(true)}
               >
-                <Sparkles className="h-4 w-4 mr-2" />
+                <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                 {strings.getStarted}
               </Button>
             </div>
