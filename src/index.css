@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -49,6 +50,17 @@
   html {
     @apply overflow-x-hidden;
     scroll-behavior: smooth;
+  }
+  
+  /* Ensure text readability on all devices */
+  p, h1, h2, h3, h4, h5, h6 {
+    @apply max-w-full break-words;
+    hyphens: auto;
+  }
+  
+  /* Improve contrast for better text visibility */
+  a, button {
+    @apply relative z-10;
   }
 }
 
@@ -123,6 +135,43 @@
     left: 100%;
     transition: 0.5s;
   }
+  
+  /* Line clamping for text that might overflow */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+  }
+  
+  /* Add fade-in animation for smooth appearance */
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+  
+  .animate-float-rotate {
+    animation: float-rotate 6s ease-in-out infinite;
+  }
+  
+  .animate-color-shift {
+    animation: color-shift 8s infinite;
+  }
+  
+  .animate-card-shimmer {
+    background: linear-gradient(90deg, 
+      rgba(255,255,255,0.05) 25%, 
+      rgba(255,255,255,0.15) 35%,
+      rgba(255,255,255,0.05) 45%);
+    background-size: 200% 100%;
+    animation: card-shimmer 3s infinite;
+  }
 }
 
 /* Improved responsiveness */
@@ -140,65 +189,19 @@
   }
 }
 
-/* Ensure text readability on all devices */
-p, h1, h2, h3, h4, h5, h6 {
-  @apply max-w-full break-words hyphens-auto;
-}
-
-/* Line clamping for text that might overflow */
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;  
-  overflow: hidden;
-}
-
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;  
-  overflow: hidden;
-}
-
-/* Improve contrast for better text visibility */
-a, button {
-  @apply relative z-10;
-}
-
 /* Responsive font sizes */
 @media (max-width: 480px) {
-  .text-2xl {
-    @apply text-xl;
-  }
-  
-  .text-xl {
-    @apply text-lg;
-  }
-  
-  .text-lg {
-    @apply text-base;
-  }
-  
-  .text-base {
-    @apply text-sm;
-  }
+  .text-2xl { font-size: 1.25rem; }
+  .text-xl { font-size: 1.125rem; }
+  .text-lg { font-size: 1rem; }
+  .text-base { font-size: 0.875rem; }
 }
 
 /* Enhanced animations */
 @keyframes float-rotate {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-10px) rotate(5deg);
-  }
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-}
-
-.animate-float-rotate {
-  animation: float-rotate 6s ease-in-out infinite;
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
 }
 
 @keyframes color-shift {
@@ -207,30 +210,12 @@ a, button {
   100% { filter: hue-rotate(0deg); }
 }
 
-.animate-color-shift {
-  animation: color-shift 8s infinite;
-}
-
 @keyframes card-shimmer {
   0% { background-position: -100% 0; }
   100% { background-position: 200% 0; }
 }
 
-.animate-card-shimmer {
-  background: linear-gradient(90deg, 
-    rgba(255,255,255,0.05) 25%, 
-    rgba(255,255,255,0.15) 35%,
-    rgba(255,255,255,0.05) 45%);
-  background-size: 200% 100%;
-  animation: card-shimmer 3s infinite;
-}
-
-/* Add fade-in animation for smooth appearance */
 @keyframes fade-in {
   0% { opacity: 0; transform: translateY(10px); }
   100% { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.6s ease-out forwards;
 }
