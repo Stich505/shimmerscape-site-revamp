@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -163,7 +162,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 /* Improve contrast for better text visibility */
 a, button {
-  @apply relative z-2;
+  @apply relative z-10;
 }
 
 /* Responsive font sizes */
