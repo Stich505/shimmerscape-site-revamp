@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import { Button } from "@/components/ui/button";
 import { LanguageContext } from '@/pages/Index';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Download } from 'lucide-react';
 
 interface HeroProps {
   title?: string;
@@ -16,16 +16,20 @@ const Hero: React.FC<HeroProps> = () => {
 
   const content = {
     en: {
+      name: "Alex Stevens",
       title: "Transform Your Digital Presence",
-      subtitle: "Innovative design solutions that captivate users and elevate your brand with stunning visual effects",
-      ctaText: "Explore",
-      contactUs: "Contact Us"
+      subtitle: "System administrator specializing in VPN solutions, cloud services and digital infrastructure",
+      ctaText: "My Projects",
+      contactUs: "Download CV",
+      profession: "System Administrator & DevOps Engineer"
     },
     ru: {
+      name: "Алекс Стивенс",
       title: "Преобразуйте Свое Цифровое Присутствие",
-      subtitle: "Инновационные дизайнерские решения, которые захватывают пользователей и поднимают ваш бренд с потрясающими визуальными эффектами",
-      ctaText: "Исследовать",
-      contactUs: "Связаться"
+      subtitle: "Системный администратор, специализирующийся на VPN-решениях, облачных сервисах и цифровой инфраструктуре",
+      ctaText: "Мои Проекты",
+      contactUs: "Скачать CV",
+      profession: "Системный администратор и DevOps инженер"
     }
   };
 
@@ -33,9 +37,17 @@ const Hero: React.FC<HeroProps> = () => {
     <section id="home" className="relative pt-20 pb-12 sm:pt-24 md:pt-32 md:pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold shimmer-text mb-4 md:mb-6 text-shadow-lg animate-shimmer-slow leading-tight">
-            {content[language].title}
+          <h2 className="text-base sm:text-lg md:text-xl text-blue-200 mb-2 text-shadow-sm animate-fade-in">
+            {content[language].profession}
+          </h2>
+          
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 md:mb-3 text-shadow-lg animate-fade-in leading-tight">
+            {content[language].name}
           </h1>
+          
+          <p className="text-xl sm:text-2xl md:text-3xl shimmer-text mb-4 md:mb-6 animate-shimmer-slow">
+            {content[language].title}
+          </p>
           
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white mb-6 md:mb-8 lg:mb-10 font-medium text-shadow-sm leading-relaxed animate-fade-in px-2 sm:px-0">
             {content[language].subtitle}
@@ -47,7 +59,7 @@ const Hero: React.FC<HeroProps> = () => {
               size="lg"
               asChild
             >
-              <a href="#about" className="flex items-center justify-center gap-2">
+              <a href="#projects" className="flex items-center justify-center gap-2">
                 <Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />
                 {content[language].ctaText}
               </a>
@@ -58,8 +70,8 @@ const Hero: React.FC<HeroProps> = () => {
               className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-indigo-600 hover:to-blue-500 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 transform hover:scale-105 animate-shimmer-fast w-full sm:w-auto text-sm sm:text-base"
               asChild
             >
-              <a href="#contact" className="flex items-center justify-center gap-2">
-                <Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />
+              <a href="#" className="flex items-center justify-center gap-2">
+                <Download className="h-4 w-4 sm:h-5 sm:w-5" />
                 {content[language].contactUs}
               </a>
             </Button>
