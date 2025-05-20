@@ -48,25 +48,25 @@ const ContactSection = () => {
                     href="https://t.me/stitch505" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 py-2 px-4 bg-blue-600/20 rounded-full hover:bg-blue-600/30 transition-colors mb-4 text-shadow-sm text-sm sm:text-base text-white font-medium"
+                    className="flex items-center gap-2 py-2 px-4 bg-blue-600/70 rounded-full hover:bg-blue-600/80 transition-colors mb-4 text-shadow-sm text-sm sm:text-base text-white font-medium"
                   >
-                    <TelegramIcon size={18} className="text-blue-500" />
+                    <TelegramIcon size={18} className="text-blue-100" />
                     <span className="break-all">{currentContent.telegram}: @stitch505</span>
                   </a>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full max-w-xl mt-6">
-                    <div className="flex flex-col items-center space-y-2 p-4 glass rounded-lg border border-white/20">
-                      <Mail className="text-blue-500 h-6 w-6 sm:h-8 sm:w-8 mb-2" />
+                    <div className="flex flex-col items-center space-y-2 p-4 bg-white/25 rounded-lg border border-white/30">
+                      <Mail className="text-blue-300 h-6 w-6 sm:h-8 sm:w-8 mb-2" />
                       <h3 className="font-medium text-sm sm:text-base text-white">{currentContent.email}</h3>
-                      <a href="mailto:aladingleb1997@gmail.com" className="text-blue-200 hover:text-blue-500 transition-colors break-all text-center text-xs sm:text-sm">
+                      <a href="mailto:aladingleb1997@gmail.com" className="text-blue-200 hover:text-blue-100 transition-colors break-all text-center text-xs sm:text-sm font-medium">
                         aladingleb1997@gmail.com
                       </a>
                     </div>
                     
-                    <div className="flex flex-col items-center space-y-2 p-4 glass rounded-lg border border-white/20">
-                      <MapPin className="text-purple-500 h-6 w-6 sm:h-8 sm:w-8 mb-2" />
+                    <div className="flex flex-col items-center space-y-2 p-4 bg-white/25 rounded-lg border border-white/30">
+                      <MapPin className="text-purple-300 h-6 w-6 sm:h-8 sm:w-8 mb-2" />
                       <h3 className="font-medium text-sm sm:text-base text-white">{currentContent.address}</h3>
-                      <a href="https://ulyanovsk.hh.ru/resume/e29f707fff062c63640039ed1f387643383031" target="_blank" rel="noopener noreferrer" className="text-blue-200 hover:text-purple-500 transition-colors">
+                      <a href="https://ulyanovsk.hh.ru/resume/e29f707fff062c63640039ed1f387643383031" target="_blank" rel="noopener noreferrer" className="text-blue-200 hover:text-purple-200 transition-colors font-medium">
                         Head Hunter
                       </a>
                     </div>
