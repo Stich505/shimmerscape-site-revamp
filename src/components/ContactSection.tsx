@@ -40,7 +40,7 @@ const ContactSection = () => {
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <Card className="glass overflow-hidden border border-white/30">
+          <Card className="bg-[#5773ef]/70 overflow-hidden border border-white/30">
             <div className="p-4 md:p-6 lg:p-8">
               <div className="space-y-6">
                 <div className="flex flex-col items-center">
@@ -48,25 +48,25 @@ const ContactSection = () => {
                     href="https://t.me/stitch505" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 py-2 px-4 bg-blue-600/70 rounded-full hover:bg-blue-600/80 transition-colors mb-4 text-shadow-sm text-sm sm:text-base text-white font-medium"
+                    className="flex items-center gap-2 py-2 px-4 bg-blue-500 rounded-full hover:bg-blue-600 transition-colors mb-4 text-shadow-sm text-white font-medium"
                   >
-                    <TelegramIcon size={18} className="text-blue-100" />
+                    <TelegramIcon size={18} className="text-white" />
                     <span className="break-all">{currentContent.telegram}: @stitch505</span>
                   </a>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full max-w-xl mt-6">
-                    <div className="flex flex-col items-center space-y-2 p-4 bg-white/25 rounded-lg border border-white/30">
-                      <Mail className="text-blue-300 h-6 w-6 sm:h-8 sm:w-8 mb-2" />
-                      <h3 className="font-medium text-sm sm:text-base text-white">{currentContent.email}</h3>
-                      <a href="mailto:aladingleb1997@gmail.com" className="text-blue-200 hover:text-blue-100 transition-colors break-all text-center text-xs sm:text-sm font-medium">
+                    <div className="flex flex-col items-center space-y-2 p-4 bg-white/90 rounded-lg border border-white/30">
+                      <Mail className="text-blue-500 h-6 w-6 sm:h-8 sm:w-8 mb-2" />
+                      <h3 className="font-medium text-sm sm:text-base text-gray-800">{currentContent.email}</h3>
+                      <a href="mailto:aladingleb1997@gmail.com" className="text-blue-600 hover:text-blue-800 transition-colors break-all text-center text-xs sm:text-sm font-medium">
                         aladingleb1997@gmail.com
                       </a>
                     </div>
                     
-                    <div className="flex flex-col items-center space-y-2 p-4 bg-white/25 rounded-lg border border-white/30">
-                      <MapPin className="text-purple-300 h-6 w-6 sm:h-8 sm:w-8 mb-2" />
-                      <h3 className="font-medium text-sm sm:text-base text-white">{currentContent.address}</h3>
-                      <a href="https://ulyanovsk.hh.ru/resume/e29f707fff062c63640039ed1f387643383031" target="_blank" rel="noopener noreferrer" className="text-blue-200 hover:text-purple-200 transition-colors font-medium">
+                    <div className="flex flex-col items-center space-y-2 p-4 bg-white/90 rounded-lg border border-white/30">
+                      <MapPin className="text-purple-600 h-6 w-6 sm:h-8 sm:w-8 mb-2" />
+                      <h3 className="font-medium text-sm sm:text-base text-gray-800">{currentContent.address}</h3>
+                      <a href="https://ulyanovsk.hh.ru/resume/e29f707fff062c63640039ed1f387643383031" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-purple-700 transition-colors font-medium">
                         Head Hunter
                       </a>
                     </div>
