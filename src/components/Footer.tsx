@@ -15,7 +15,6 @@ const Footer = () => {
       projects: "Projects",
       contact: "Contact",
       contactTitle: "Contact",
-      address: "Portfolio",
       copyright: "© 2025 Gleb Aladyin. All rights reserved.",
       email: "Email"
     },
@@ -27,7 +26,6 @@ const Footer = () => {
       projects: "Проекты",
       contact: "Контакты",
       contactTitle: "Контакты",
-      address: "Портфолио",
       copyright: "© 2025 Глеб Аладьин. Все права защищены.",
       email: "Электронная почта"
     }
@@ -64,15 +62,6 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4 text-white">{currentContent.contactTitle}</h4>
             <ul className="space-y-3">
-              <li className="flex items-start space-x-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-300 mt-0.5 flex-shrink-0">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-                <a href="https://ulyanovsk.hh.ru/resume/e29f707fff062c63640039ed1f387643383031" target="_blank" rel="noopener noreferrer" className="text-blue-200 hover:text-blue-100 transition-colors">
-                  {currentContent.address}
-                </a>
-              </li>
               <li className="flex items-start space-x-2">
                 <TelegramIcon className="text-blue-300 mt-0.5 flex-shrink-0" size={18} />
                 <span className="text-white">@stitch505</span>

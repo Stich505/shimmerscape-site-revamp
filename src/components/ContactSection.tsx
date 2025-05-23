@@ -63,10 +63,15 @@ const ContactSection = () => {
                       </a>
                     </div>
                     
-                    <div className="flex flex-col items-center space-y-2 p-4 bg-white/90 rounded-lg border border-white/30">
-                      <MapPin className="text-purple-600 h-6 w-6 sm:h-8 sm:w-8 mb-2" />
-                      <h3 className="font-medium text-sm sm:text-base text-gray-800">{currentContent.address}</h3>
-                      <a href="https://ulyanovsk.hh.ru/resume/e29f707fff062c63640039ed1f387643383031" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-purple-700 transition-colors font-medium">
+                    <div className="flex flex-col items-center space-y-2 p-4 bg-purple-600/90 rounded-lg border border-white/30">
+                      <MapPin className="text-white h-6 w-6 sm:h-8 sm:w-8 mb-2" />
+                      <h3 className="font-medium text-sm sm:text-base text-white">{currentContent.address}</h3>
+                      <a 
+                        href="https://ulyanovsk.hh.ru/resume/e29f707fff062c63640039ed1f387643383031" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-white hover:text-blue-100 transition-colors font-medium underline"
+                      >
                         Head Hunter
                       </a>
                     </div>
