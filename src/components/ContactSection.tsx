@@ -66,13 +66,13 @@ const ContactSection = () => {
                       </a>
                     </div>
                     
-                    <div className="flex flex-col items-center justify-between space-y-2 p-4 bg-gradient-to-br from-purple-500/90 to-pink-600/90 rounded-lg border border-white/30 shadow-lg shadow-purple-500/20">
+                    <div className="flex flex-col items-center justify-between space-y-2 p-4 bg-gradient-to-br from-blue-500/90 to-indigo-600/90 rounded-lg border border-white/30 shadow-lg shadow-blue-500/20">
                       <h3 className="font-medium text-sm sm:text-base text-white">{currentContent.address}</h3>
                       
                       <Button 
                         asChild
                         variant="default" 
-                        className="bg-white hover:bg-blue-50 text-purple-700 hover:text-purple-800 mt-2 w-full shadow-md" 
+                        className="bg-white hover:bg-blue-50 text-blue-700 hover:text-blue-800 mt-2 w-full shadow-md" 
                         size="sm"
                       >
                         <a 
