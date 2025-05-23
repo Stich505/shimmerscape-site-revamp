@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { Card } from "@/components/ui/card";
 import { LanguageContext } from '@/pages/Index';
 import TelegramIcon from './icons/TelegramIcon';
-import { Mail } from 'lucide-react';
+import { Mail, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const ContactSection = () => {
@@ -66,13 +66,14 @@ const ContactSection = () => {
                       </a>
                     </div>
                     
-                    <div className="flex flex-col items-center justify-between space-y-2 p-4 bg-gradient-to-br from-blue-500/90 to-indigo-600/90 rounded-lg border border-white/30 shadow-lg shadow-blue-500/20">
+                    <div className="flex flex-col items-center space-y-2 p-4 bg-gradient-to-br from-blue-500/90 to-indigo-600/90 rounded-lg border border-white/30 shadow-lg shadow-blue-500/20">
+                      <ExternalLink className="text-white h-6 w-6 sm:h-8 sm:w-8 mb-2" />
                       <h3 className="font-medium text-sm sm:text-base text-white">{currentContent.address}</h3>
                       
                       <Button 
                         asChild
                         variant="default" 
-                        className="bg-white hover:bg-blue-50 text-blue-700 hover:text-blue-800 mt-2 w-full shadow-md" 
+                        className="bg-white hover:bg-blue-50 text-blue-700 hover:text-blue-800 mt-2 w-full shadow-md text-xs sm:text-sm" 
                         size="sm"
                       >
                         <a 
