@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { Card } from "@/components/ui/card";
 import { LanguageContext } from '@/pages/Index';
 import TelegramIcon from './icons/TelegramIcon';
-import { Mail, MapPin, Link } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const ContactSection = () => {
@@ -58,25 +58,21 @@ const ContactSection = () => {
                   </a>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full max-w-xl mt-6">
-                    <div className="flex flex-col items-center space-y-2 p-4 bg-white/90 rounded-lg border border-white/30">
-                      <Mail className="text-blue-500 h-6 w-6 sm:h-8 sm:w-8 mb-2" />
-                      <h3 className="font-medium text-sm sm:text-base text-gray-800">{currentContent.email}</h3>
-                      <a href="mailto:aladingleb1997@gmail.com" className="text-blue-600 hover:text-blue-800 transition-colors break-all text-center text-xs sm:text-sm font-medium">
+                    <div className="flex flex-col items-center space-y-2 p-4 bg-gradient-to-br from-blue-500/90 to-indigo-600/90 rounded-lg border border-white/30 shadow-lg shadow-blue-500/20">
+                      <Mail className="text-white h-6 w-6 sm:h-8 sm:w-8 mb-2" />
+                      <h3 className="font-medium text-sm sm:text-base text-white">{currentContent.email}</h3>
+                      <a href="mailto:aladingleb1997@gmail.com" className="text-blue-100 hover:text-white transition-colors break-all text-center text-xs sm:text-sm font-medium underline underline-offset-2">
                         aladingleb1997@gmail.com
                       </a>
                     </div>
                     
-                    <div className="flex flex-col items-center space-y-2 p-4 bg-white/90 rounded-lg border border-white/30">
-                      <div className="flex items-center justify-center">
-                        <MapPin className="text-purple-600 h-6 w-6 sm:h-8 sm:w-8" />
-                        <Link className="text-purple-600 h-5 w-5 sm:h-6 sm:w-6 ml-1" />
-                      </div>
-                      <h3 className="font-medium text-sm sm:text-base text-gray-800">{currentContent.address}</h3>
+                    <div className="flex flex-col items-center justify-between space-y-2 p-4 bg-gradient-to-br from-purple-500/90 to-pink-600/90 rounded-lg border border-white/30 shadow-lg shadow-purple-500/20">
+                      <h3 className="font-medium text-sm sm:text-base text-white">{currentContent.address}</h3>
                       
                       <Button 
                         asChild
                         variant="default" 
-                        className="bg-purple-600 hover:bg-purple-700 text-white w-full" 
+                        className="bg-white hover:bg-blue-50 text-purple-700 hover:text-purple-800 mt-2 w-full shadow-md" 
                         size="sm"
                       >
                         <a 
