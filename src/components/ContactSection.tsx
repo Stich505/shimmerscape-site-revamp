@@ -3,7 +3,8 @@ import React, { useContext } from 'react';
 import { Card } from "@/components/ui/card";
 import { LanguageContext } from '@/pages/Index';
 import TelegramIcon from './icons/TelegramIcon';
-import { Mail, MapPin } from 'lucide-react';
+import { Mail, MapPin, Link } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const ContactSection = () => {
   const { language } = useContext(LanguageContext);
@@ -14,14 +15,16 @@ const ContactSection = () => {
       description: "Have a project in mind? I'd love to hear from you. Feel free to contact me through the channels below.",
       telegram: "Contact me on Telegram",
       email: "Email",
-      address: "Portfolio"
+      address: "Portfolio",
+      viewPortfolio: "View My Portfolio"
     },
     ru: {
       title: "Связаться со мной",
       description: "Есть проект на примете? Я буду рад услышать от вас. Свяжитесь со мной через каналы ниже.",
       telegram: "Свяжитесь со мной в Telegram",
       email: "Электронная почта",
-      address: "Портфолио"
+      address: "Портфолио",
+      viewPortfolio: "Посмотреть моё портфолио"
     }
   };
 
@@ -63,17 +66,27 @@ const ContactSection = () => {
                       </a>
                     </div>
                     
-                    <div className="flex flex-col items-center space-y-2 p-4 bg-purple-600/90 rounded-lg border border-white/30">
-                      <MapPin className="text-white h-6 w-6 sm:h-8 sm:w-8 mb-2" />
-                      <h3 className="font-medium text-sm sm:text-base text-white">{currentContent.address}</h3>
-                      <a 
-                        href="https://ulyanovsk.hh.ru/resume/e29f707fff062c63640039ed1f387643383031" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="text-white hover:text-blue-100 transition-colors font-medium underline"
+                    <div className="flex flex-col items-center space-y-2 p-4 bg-white/90 rounded-lg border border-white/30">
+                      <div className="flex items-center justify-center">
+                        <MapPin className="text-purple-600 h-6 w-6 sm:h-8 sm:w-8" />
+                        <Link className="text-purple-600 h-5 w-5 sm:h-6 sm:w-6 ml-1" />
+                      </div>
+                      <h3 className="font-medium text-sm sm:text-base text-gray-800">{currentContent.address}</h3>
+                      
+                      <Button 
+                        asChild
+                        variant="default" 
+                        className="bg-purple-600 hover:bg-purple-700 text-white w-full" 
+                        size="sm"
                       >
-                        Head Hunter
-                      </a>
+                        <a 
+                          href="https://ulyanovsk.hh.ru/resume/e29f707fff062c63640039ed1f387643383031" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                        >
+                          {currentContent.viewPortfolio}
+                        </a>
+                      </Button>
                     </div>
                   </div>
                 </div>
