@@ -45,22 +45,38 @@
   body {
     @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
     font-feature-settings: "rlig" 1, "calt" 1;
+    /* Prevent mobile flickering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   html {
     @apply overflow-x-hidden;
     scroll-behavior: smooth;
+    /* Prevent layout shifts on mobile */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
   }
   
   /* Ensure text readability on all devices */
   p, h1, h2, h3, h4, h5, h6 {
     @apply max-w-full break-words;
     hyphens: auto;
+    /* Prevent flickering during font loading */
+    font-display: swap;
   }
   
   /* Improve contrast for better text visibility */
   a, button {
     @apply relative z-10;
+  }
+
+  /* Prevent mobile viewport jumping */
+  @supports (-webkit-touch-callout: none) {
+    .min-h-screen {
+      min-height: -webkit-fill-available;
+    }
   }
 }
 
@@ -172,6 +188,19 @@
     background-size: 200% 100%;
     animation: card-shimmer 3s infinite;
   }
+
+  /* Anti-flickering utilities for mobile */
+  .no-flicker {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  .gpu-accelerated {
+    will-change: transform;
+    transform: translateZ(0);
+  }
 }
 
 /* Improved responsiveness */
@@ -186,6 +215,25 @@
   
   .shimmer-text {
     background-size: 300% auto;
+  }
+
+  /* Prevent mobile flickering */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Allow text selection for important content */
+  p, h1, h2, h3, h4, h5, h6, span {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
   }
 }
 

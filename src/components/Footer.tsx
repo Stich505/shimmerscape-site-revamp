@@ -19,7 +19,7 @@ const Footer = () => {
       email: "Email"
     },
     ru: {
-      description: "Создание мощных цифровых решений с использованием передовых технологий и эффективной системной архитектуры. Моя миссия — создать надежную инфраструктуру для ваших цифровых потребностей.",
+      description: "Создание мощных цифровых решений с использованием передовых технологий и эффективной системной архитектуры. Моя миссия — создать надежную и устойчивую инфраструктуру для ваших цифровых потребностей.",
       quickLinks: "Быстрые ссылки",
       home: "Главная",
       about: "Обо мне",
@@ -39,7 +39,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-xl font-bold shimmer-text mb-4">Gleb Aladyin</h3>
-            <p className="text-white mb-4 max-w-md leading-relaxed">
+            <p className="text-white/90 mb-4 max-w-md leading-relaxed font-medium text-shadow-sm bg-gradient-to-r from-blue-100/95 via-white/95 to-blue-100/95 bg-clip-text text-transparent">
               {currentContent.description}
             </p>
             <div className="flex space-x-4">
