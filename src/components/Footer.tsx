@@ -34,12 +34,12 @@ const Footer = () => {
   const currentContent = content[language];
 
   return (
-    <footer className="bg-[#1a1f3a]/95 py-8 relative z-10 border-t border-white/10">
+    <footer className="bg-[#1a1f3a]/95 py-8 relative z-10 border-t border-white/10 no-flicker gpu-accelerated">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-xl font-bold shimmer-text mb-4">Gleb Aladyin</h3>
-            <p className="text-white/90 mb-4 max-w-md leading-relaxed font-medium text-shadow-sm bg-gradient-to-r from-blue-100/95 via-white/95 to-blue-100/95 bg-clip-text text-transparent">
+            <p className="text-white font-semibold mb-4 max-w-md leading-relaxed text-shadow-lg bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text">
               {currentContent.description}
             </p>
             <div className="flex space-x-4">
